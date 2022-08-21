@@ -54,23 +54,14 @@ def analysis_options():
         break
 
 def search_artist():
-    requested_artist = input(("Enter an artist or band: ")).lower()
     artists = worksheet.col_values(4)
-    """
-    for artist in artists:
-        if requested_artist in artists:
-            print 
-    """
     
-    matched_indexes = []
-    i = 0
-    length = len(artists)
-    while i < length:
-        if requested_artist == artists[i]:
-            matched_indexes.append(i)
-        i += 1
-    print(matched_indexes)
-
+    requested_artist = input(("Enter an artist or band: "))
+    matches = []
+    for match in artists:
+        if requested_artist in match:
+            matches.append(match)
+    print(matches)
 
 
 
