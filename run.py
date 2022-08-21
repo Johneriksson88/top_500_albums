@@ -14,4 +14,4 @@ SHEET = GSPREAD_CLIENT.open('albumlist')
 
 albumlist = SHEET.worksheet('albumlist')
 
-print(albumlist.get_all_values())
+print("Welcome to a program for analysis of The Rolling Stones top 500 albums.\nThe list was published in 2003 with a slight update 2012.\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.")
