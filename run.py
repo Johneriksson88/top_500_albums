@@ -42,10 +42,37 @@ def start_menu():
                   "Number", "Year", "Album", "Artist", "Genre"]))
             break
         elif menu_choice_1 == "2":
-            print("Analysis options")
+            analysis_options()
             break
-        print("Invalid input, try again.")
+        print("Input must be 1 or 2, try again.")
 
 def analysis_options():
+    while True:
+        print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list of a given parameter\n3.",
+        "Get most occuring genre per decade\n4. Add your own album(s) to the list")
+        search_artist()
+        break
+
+def search_artist():
+    requested_artist = input(("Enter an artist or band: ")).lower()
+    artists = worksheet.col_values(4)
+    """
+    for artist in artists:
+        if requested_artist in artists:
+            print 
+    """
     
+    matched_indexes = []
+    i = 0
+    length = len(artists)
+    while i < length:
+        if requested_artist == artists[i]:
+            matched_indexes.append(i)
+        i += 1
+    print(matched_indexes)
+
+
+
+
+
 start_menu()
