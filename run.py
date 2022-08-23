@@ -69,14 +69,13 @@ def get_top_10():
 
     elif menu_choice_2 == "3":
         years = worksheet.col_values(2)
-        #ints = [eval(i) for i in years]
-        print(int(years))
-        """
-        for each in years:
+        ints = [eval(i) for i in years]
+        decades = []
+        for each in ints:
             decade = int(np.floor(each / 10) * 10)
             decades.append(decade)
-        print(decades)
-        """
+        dec_counter = Counter(decades)
+        print(dec_counter)
         
 
 
