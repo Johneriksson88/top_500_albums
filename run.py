@@ -1,6 +1,8 @@
 import gspread
 from tabulate import tabulate
 from google.oauth2.service_account import Credentials
+from collections import Counter
+import numpy as np
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -18,19 +20,6 @@ albumlist = worksheet.get_all_values()
 
 print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Stones top 500 albums list.\nThe list was published in 2003 with a slight update 2012.",
       "\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.\n\n" + "*" * 70 + "\n")
-
-"""
-def validate_menu_choice(menu_choice_1):
-    try:
-        if menu_choice_1 != 1 or menu_choice_1 != 2:
-            raise ValueError(
-                f"Choice can only be 1 or 2, you provided {menu_choice_1}"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again\n")
-        return False
-    return True
-"""
 
 
 def start_menu():
@@ -50,9 +39,9 @@ def analysis_options():
     while True:
         print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list of a given parameter\n3.",
         "Get most occuring genre per decade\n4. Add your own album(s) to the list")
-        search_artist()
+        get_top_10()
         break
-
+"""
 def search_artist():
     artists = worksheet.col_values(4)
     
@@ -62,8 +51,33 @@ def search_artist():
         if requested_artist in match:
             matches.append(match)
     print(matches)
+"""
 
+def get_top_10():
+    print("\nChoose a variable to see a top 10 list of:\n1. Artist\n2. Year\n3. Decade\n4. Genre")
+    menu_choice_2 = input()
+    
+    if menu_choice_2 == "1":
+        artist_count = Counter(worksheet.col_values(4))
+        top_10_artist = artist_count.most_common(10)
+        print(tabulate(top_10_artist, headers=["Artist", "No. of placements"]))
 
+    elif menu_choice_2 == "2":
+        year_count = Counter(worksheet.col_values(2))
+        top_10_years = year_count.most_common(10)
+        print(tabulate(top_10_years, headers=["Year", "No. of placements"]))
+
+    elif menu_choice_2 == "3":
+        years = worksheet.col_values(2)
+        #ints = [eval(i) for i in years]
+        print(int(years))
+        """
+        for each in years:
+            decade = int(np.floor(each / 10) * 10)
+            decades.append(decade)
+        print(decades)
+        """
+        
 
 
 start_menu()
