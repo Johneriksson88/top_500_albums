@@ -40,21 +40,14 @@ def analysis_options():
     while True:
         print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list of a given parameter\n3.",
               "Get most occuring genre per decade\n4. Add your own album(s) to the list")
-        get_top_10()
+        search_artist()
         break
 
 
-"""
 def search_artist():
-    artists = worksheet.col_values(4)
     
-    requested_artist = input(("Enter an artist or band: "))
-    matches = []
-    for match in artists:
-        if requested_artist in match:
-            matches.append(match)
-    print(matches)
-"""
+    q = input("Enter an artist or a band: ")
+    answers = worksheet.findall(q, in_column=4, case_sensitive=False)
 
 
 def get_pct(int):
@@ -64,6 +57,13 @@ def get_pct(int):
     pct = int / 500 * 100
     return pct
 
+def get_int(tuple):
+    """
+    Takes a list of tuples and gets the second value of the first tuple
+    """
+    tup = tuple[0]
+    i = tup[1]
+    return i
 
 def get_top_10():
     """
@@ -80,10 +80,9 @@ def get_top_10():
     if menu_choice_2 == "1":
         artist_count = Counter(worksheet.col_values(4)).most_common(10)
         top_1_artist = artist_count[0]
-        top_1_artist_int = top_1_artist[1]
         print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
         print(
-            f"\nThe most popular year was {top_1_artist[0]} with {get_pct(top_1_artist_int)}% of placements")
+            f"\nThe most popular artist was {top_1_artist[0]} with {get_pct(get_int(artist_count))}% of placements")
 
 
     # Counts the number of values in the 2nd(year) column and prints the 10 most common years in a table
@@ -99,7 +98,7 @@ def get_top_10():
 
     
     # Converts the years into ints, extracts the decades using numpy floor method and puts them into a list
-    # and prints a top list of the decades represented. 
+    # and prints a top list of the decades represented
     
 
     elif menu_choice_2 == "3":
