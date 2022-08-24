@@ -35,12 +35,15 @@ def start_menu():
             break
         print("Input must be 1 or 2, try again.")
 
+
 def analysis_options():
     while True:
         print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list of a given parameter\n3.",
-        "Get most occuring genre per decade\n4. Add your own album(s) to the list")
+              "Get most occuring genre per decade\n4. Add your own album(s) to the list")
         get_top_10()
         break
+
+
 """
 def search_artist():
     artists = worksheet.col_values(4)
@@ -53,19 +56,51 @@ def search_artist():
     print(matches)
 """
 
+
+def get_pct(int):
+    """
+    Takes a value and turns it in to a percentage of the 500 placements
+    """
+    pct = int / 500 * 100
+    return pct
+
+
 def get_top_10():
+    """
+    The menu for "Get top 10 lists"
+    """
+
     print("\nChoose a variable to see a top 10 list of:\n1. Artist\n2. Year\n3. Decade\n4. Genre")
     menu_choice_2 = input()
+
+    
+    # Counts the number of values in the 4th(artist) column and prints the 10 most common artists in a table
+    # and a line presenting the most popular artist and the percentage of their placements
     
     if menu_choice_2 == "1":
-        artist_count = Counter(worksheet.col_values(4))
-        top_10_artist = artist_count.most_common(10)
-        print(tabulate(top_10_artist, headers=["Artist", "No. of placements"]))
+        artist_count = Counter(worksheet.col_values(4)).most_common(10)
+        top_1_artist = artist_count[0]
+        top_1_artist_int = top_1_artist[1]
+        print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
+        print(
+            f"\nThe most popular year was {top_1_artist[0]} with {get_pct(top_1_artist_int)}% of placements")
+
+
+    # Counts the number of values in the 2nd(year) column and prints the 10 most common years in a table
+    # and a line presenting the most popular year and the percentage of its placements
 
     elif menu_choice_2 == "2":
-        year_count = Counter(worksheet.col_values(2))
-        top_10_years = year_count.most_common(10)
-        print(tabulate(top_10_years, headers=["Year", "No. of placements"]))
+        year_count = Counter(worksheet.col_values(2)).most_common(10)
+        top_1_year = year_count[0]
+        top_1_year_int = top_1_year[1]
+        print(tabulate(year_count, headers=["Year", "No. of placements"]))
+        print(
+            f"\nThe most popular year was {top_1_year[0]} with {get_pct(top_1_year_int)}% of placements")
+
+    
+    # Converts the years into ints, extracts the decades using numpy floor method and puts them into a list
+    # and prints a top list of the decades represented. 
+    
 
     elif menu_choice_2 == "3":
         years = worksheet.col_values(2)
@@ -74,9 +109,22 @@ def get_top_10():
         for each in ints:
             decade = int(np.floor(each / 10) * 10)
             decades.append(decade)
-        dec_counter = Counter(decades)
+        # FIX THIS - cannot tabulate
+        dec_counter = tabulate(Counter(decades))
         print(dec_counter)
-        
+
+   
+    # Counts the number of values in the 5th(year) column and prints the 10 most common genres in a table
+    # and a line presenting the most popular genre and the percentage of its placements
+    
+
+    elif menu_choice_2 == "4":
+        genre_count = Counter(worksheet.col_values(5)).most_common(10)
+        top_1_genre = genre_count[0]
+        top_1_genre_int = top_1_genre[1]
+        print(tabulate(genre_count, headers=["Genre", "No. of placements"]))
+        print(
+            f"\nThe most popular genre was {top_1_genre[0]} with {get_pct(top_1_genre_int)}% of placements")
 
 
 start_menu()
