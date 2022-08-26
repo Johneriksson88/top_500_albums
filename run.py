@@ -38,7 +38,7 @@ def start_menu():
 
 def analysis_options():
     while True:
-        print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list of a given parameter\n3.",
+        print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list\n3.",
               "Get most occuring genre per decade\n4. Add your own album(s) to the list")
         menu_choice = input()
         if menu_choice == "1":
@@ -75,6 +75,13 @@ def get_int(tuple):
     i = tup[1]
     return i
 
+def top_10_artist():
+    artist_count = Counter(worksheet.col_values(4)).most_common(10)
+    top_1_artist = artist_count[0]
+    print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
+    print(
+        f"\nThe most popular artist was {top_1_artist[0]} with {get_pct(get_int(artist_count))}% of placements")
+
 def get_top_10():
     """
     The menu for "Get top 10 lists"
@@ -88,11 +95,7 @@ def get_top_10():
     # and a line presenting the most popular artist and the percentage of their placements
     
     if menu_choice == "1":
-        artist_count = Counter(worksheet.col_values(4)).most_common(10)
-        top_1_artist = artist_count[0]
-        print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
-        print(
-            f"\nThe most popular artist was {top_1_artist[0]} with {get_pct(get_int(artist_count))}% of placements")
+        top_10_artist()
 
 
     # Counts the number of values in the 2nd(year) column and prints the 10 most common years in a table
@@ -118,9 +121,10 @@ def get_top_10():
         for each in ints:
             decade = int(np.floor(each / 10) * 10)
             decades.append(decade)
-        # FIX THIS - cannot tabulate
-        dec_counter = tabulate(Counter(decades))
-        print(dec_counter)
+        d_counter = Counter(decades)
+        d_most_common = d_counter.most_common(7)
+        print("\nSince there are only 7 decades represented in the list, this is a top 7 list:\n")
+        print(tabulate(d_most_common, headers=["Decade", "No. of placements"]))
 
    
     # Counts the number of values in the 5th(year) column and prints the 10 most common genres in a table
@@ -129,6 +133,7 @@ def get_top_10():
 
     elif menu_choice == "4":
         genre_count = Counter(worksheet.col_values(5)).most_common(10)
+        print(type(genre_count))
         top_1_genre = genre_count[0]
         top_1_genre_int = top_1_genre[1]
         print(tabulate(genre_count, headers=["Genre", "No. of placements"]))
