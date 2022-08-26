@@ -58,6 +58,12 @@ def search_artist():
     
     q = input("Enter an artist or a band: ")
     answers = worksheet.findall(q, in_column=4, case_sensitive=False)
+    print(type(answers))
+    answer_list = []
+    for cell in answers:
+        answer_list.append(cell)
+    print(answer_list)
+
 
 
 def get_pct(int):
@@ -96,7 +102,7 @@ def top_10_year():
     top_1_year_int = top_1_year[1]
     print(tabulate(year_count, headers=["Year", "No. of placements"]))
     print(
-        f"\nThe most popular year was {top_1_year[0]} with {get_pct(top_1_year_int)}% of placements")
+        f"\nThe most popular year was {top_1_year[0]} with {get_pct(get_int(top_1_year_int))}% of placements")
 
 def top_10_decade():
 
@@ -113,10 +119,19 @@ def top_10_decade():
         decades.append(decade)
     d_counter = Counter(decades)
     d_most_common = d_counter.most_common(7)
+    top_decade = d_most_common[0]
+    top_decade_int = top_decade[1]
+    print(type(top_decade_int))
     print("\nSince there are only 7 decades represented in the list, this is a top 7 list:\n")
     print(tabulate(d_most_common, headers=["Decade", "No. of placements"]))
+    print(
+        f"\nThe most popular decade was {top_decade[0]} with {get_pct(top_decade_int)}% of placements")
 
 def top_10_genre():
+    """ 
+    Counts the number of values in the 5th(year) column and prints the 10 most common genres in a table
+    and a line presenting the most popular genre and the percentage of its placements
+    """
     genre_count = Counter(worksheet.col_values(5)).most_common(10)
     print(type(genre_count))
     top_1_genre = genre_count[0]
