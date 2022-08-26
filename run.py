@@ -169,6 +169,16 @@ def get_top_10():
 
 def add_album():
     list_name = input("Enter a name for your list:")
-    print(list_name)
+    new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
+    placement = input("Enter a placement (a number between 1 and 500): ")
+    new_ws.update("A1", placement)
+    year = input("Year: ")
+    new_ws.update("B1", year)
+    name = input("Album name: ")
+    new_ws.update("C1", name)
+    artist = input("Artist/band: ")
+    new_ws.update("D1", artist)
+    genre = input("Genre:")
+    new_ws.update("E1", genre)
 
 start_menu()
