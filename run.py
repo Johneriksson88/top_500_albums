@@ -25,46 +25,48 @@ print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Ston
 def start_menu():
     while True:
         menu_choice = input(
-            "Type in 1 to see the whole list, 2 to see analysis options: ")
+            "----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Quit\n")
         if menu_choice == "1":
             print(tabulate(albumlist, headers=[
                   "Number", "Year", "Album", "Artist", "Genre"]))
-            break
+            start_menu()
         elif menu_choice == "2":
             analysis_options()
+        elif menu_choice == "3":
+            add_album()
+        elif menu_choice == "4":
             break
-        print("Input must be 1 or 2, try again.")
-
+        print("\nInvalid option, please try again.")
 
 def analysis_options():
     while True:
-        print("\nMake one of the following choices:\n1. Search for artist\n2. Get top 10 list\n3.",
-              "Get most occuring genre per decade\n4. Add your own album(s) to the list")
+        print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 list\n3.",
+              "Get most occuring genre per decade\n4. Main menu")
         menu_choice = input()
         if menu_choice == "1":
             search_artist()
         elif menu_choice == "2":
             get_top_10()
         elif menu_choice == "3":
-            print("Enter a decade (e.g. 1970, 1990 etc.)")
+            print("Decade  -  Artist")
             #most_occurring_per_decade()
         elif menu_choice == "4":
-            print("Add album: ")
-            #add_album()
-        break
-
-
+            start_menu()
+        
+        print("\nInvalid option, please try again.")
+        
 def search_artist():
     
     q = input("Enter an artist or a band: ")
     answers = worksheet.findall(q, in_column=4, case_sensitive=False)
-    print(type(answers))
-    answer_list = []
-    for cell in answers:
-        answer_list.append(cell)
-    print(answer_list)
-
-
+    print(albumlist)
+    a = []
+    for row in albumlist:
+        for j in row:
+            if q in albumlist[row][j]:
+                a.append(albumlist[row].get_all_values())
+    print(a)
+    analysis_options()
 
 def get_pct(int):
     """
@@ -91,6 +93,7 @@ def top_10_artist():
     print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
     print(
         f"\nThe most popular artist was {top_1_artist[0]} with {get_pct(get_int(artist_count))}% of placements")
+    get_top_10()
 
 def top_10_year():
     """
@@ -103,6 +106,7 @@ def top_10_year():
     print(tabulate(year_count, headers=["Year", "No. of placements"]))
     print(
         f"\nThe most popular year was {top_1_year[0]} with {get_pct(get_int(top_1_year_int))}% of placements")
+    get_top_10()
 
 def top_10_decade():
 
@@ -126,6 +130,7 @@ def top_10_decade():
     print(tabulate(d_most_common, headers=["Decade", "No. of placements"]))
     print(
         f"\nThe most popular decade was {top_decade[0]} with {get_pct(top_decade_int)}% of placements")
+    get_top_10()
 
 def top_10_genre():
     """ 
@@ -139,23 +144,31 @@ def top_10_genre():
     print(tabulate(genre_count, headers=["Genre", "No. of placements"]))
     print(
         f"\nThe most popular genre was {top_1_genre[0]} with {get_pct(top_1_genre_int)}% of placements")
+    get_top_10()
 
 def get_top_10():
     """
     The menu for "Get top 10 lists"
     """
+    while True:
+        print("\n---- TOP 10 LISTS ----\n1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n6. Main menu")
+        menu_choice = input()
+        if menu_choice == "1":
+            top_10_artist()
+        elif menu_choice == "2":
+            top_10_year()
+        elif menu_choice == "3":
+            top_10_decade()
+        elif menu_choice == "4":
+            top_10_genre()
+        elif menu_choice == "5":
+            analysis_options()
+        elif menu_choice == "6":
+            start_menu()
+        print("\nInvalid option, please try again.")
 
-    print("\nChoose a variable to see a top 10 list of:\n1. Artist\n2. Year\n3. Decade\n4. Genre")
-    menu_choice = input()
-
-    if menu_choice == "1":
-        top_10_artist()
-    elif menu_choice == "2":
-        top_10_year()
-    elif menu_choice == "3":
-        top_10_decade()
-    elif menu_choice == "4":
-        top_10_genre()
-
+def add_album():
+    list_name = input("Enter a name for your list:")
+    print(list_name)
 
 start_menu()
