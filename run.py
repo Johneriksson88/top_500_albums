@@ -56,21 +56,15 @@ def analysis_options():
             print("Decade  -  Artist")
             #most_occurring_per_decade()
         elif menu_choice == "4":
-            start_menu()
+            main_menu()
         
         print("\nInvalid option, please try again.")
-        
+
 def search_artist():
     
-    q = input("Enter an artist or a band: ")
-    answers = worksheet.findall(q, in_column=4, case_sensitive=False)
-    print(albumlist)
-    a = []
-    for row in albumlist:
-        for j in row:
-            if q in albumlist[row][j]:
-                a.append(albumlist[row].get_all_values())
-    print(a)
+    q = input("Enter an artist or a band: ").lower()
+    a = [row for row in albumlist if row[3].lower() == q]
+    print(tabulate(a, headers=["Placement", "Year", "Album", "Artist", "Genre"]))
     analysis_options()
 
 def get_pct(int):
