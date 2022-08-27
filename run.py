@@ -186,7 +186,7 @@ def add_to_list():
     selected_ws = ""
     for i in sheet_list:
         if choice == i:
-            selected_ws += sheet_list[i]
+            selected_ws = sheet_list[choice]
     print(selected_ws)
     
         
@@ -200,21 +200,59 @@ def add_album(ws):
     new_ws = ws
     while True:
         new_row = []
-        placement = input("Enter a placement (a number between 1 and 500): ")
+        while True:
+            try:
+                placement = int(input("Enter a placement (a number between 1 and 500): "))
+            except ValueError:
+                print("Invalid input, try again.")
+                continue
+            if placement > 500 or placement < 1:
+                print("Placement must be a number between 1 and 500.")
+                continue
+            else:
+                break
         new_row.append(placement)
-        year = input("Year: ")
+        while True:
+            try:
+                year = int(input("Year: "))
+            except ValueError:
+                print("Invalid input, try again.")
+                continue
+            if year > 9999 or year < 1000:
+                print("Must be a 4 digit year.")
+                continue
+            else:
+                break
         new_row.append(year)
-        name = input("Album name: ")
+        while True:
+            try:
+                name = input("Album name: ")
+            except ValueError:
+                print("Invalid input, try again.")
+                continue
+            else:
+                break
         new_row.append(name)
-        artist = input("Artist/band: ")
+        while True:
+            try:
+                artist = input("Artist/band: ")
+            except ValueError:
+                print("Invalid input, try again.")
+                continue
+            else:
+                break
         new_row.append(artist)
-        genre = input("Genre:")
+        while True:
+            try:
+                genre = input("Genre:")
+            except ValueError:
+                print("Invalid input, try again.")
+                continue
+            else:
+                break
         new_row.append(genre)
         new_ws.append_row(new_row)
-        print(f"New album added to worksheet {new_ws}")
-        choice = input("\n1. Add another album\n2. Main menu\n")
-        if choice == "2":
-            start_menu()
+        print(f"\nNew album added to worksheet {new_ws.title}")
 
 
 start_menu()
