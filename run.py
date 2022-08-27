@@ -80,11 +80,15 @@ def top_10_artist():
     and a line presenting the most popular artist and the percentage of their placements
     """
     artist_count = Counter(worksheet.col_values(4)).most_common(10)
-    top_1_artist = artist_count[0]
-    artist, no_placements = top_1_artist
+    shared_first_place = []
+    # Loop through top 10 artists to find if there are shared first places
+    for x, y in artist_count:
+        if y in artist_count[0]:
+            shared_first_place.append(x)
+    artist, no_placements = artist_count[0]
     print(tabulate(artist_count, headers=["Artist", "No. of placements"]))
     print(
-        f"\nThe most popular artist was {artist} with {get_pct(no_placements)}% of placements")
+        f"\nThe most popular artists were {', '.join(shared_first_place)} with {get_pct(no_placements)}% of placements each")
 
 def top_10_year():
     """
