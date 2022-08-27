@@ -184,61 +184,72 @@ def new_list():
 
 def add_album(ws):
     new_ws = ws
+
+    new_row = []
     while True:
-        new_row = []
-        while True:
-            try:
-                placement = int(input("Enter a placement (a number between 1 and 500): "))
-            except ValueError:
-                print("Invalid input, try again.")
-                continue
-            if placement > 500 or placement < 1:
-                print("Placement must be a number between 1 and 500.")
-                continue
-            else:
-                break
-        new_row.append(placement)
-        while True:
-            try:
-                year = int(input("Year: "))
-            except ValueError:
-                print("Invalid input, try again.")
-                continue
-            if year > 9999 or year < 1000:
-                print("Must be a 4 digit year.")
-                continue
-            else:
-                break
-        new_row.append(year)
-        while True:
-            try:
-                name = input("Album name: ")
-            except ValueError:
-                print("Invalid input, try again.")
-                continue
-            else:
-                break
-        new_row.append(name)
-        while True:
-            try:
-                artist = input("Artist/band: ")
-            except ValueError:
-                print("Invalid input, try again.")
-                continue
-            else:
-                break
-        new_row.append(artist)
-        while True:
-            try:
-                genre = input("Genre:")
-            except ValueError:
-                print("Invalid input, try again.")
-                continue
-            else:
-                break
-        new_row.append(genre)
-        new_ws.append_row(new_row)
-        print(f"\nNew album added to worksheet {new_ws.title}")
+        try:
+            placement = int(input("Enter a placement (a number between 1 and 500): "))
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        if placement > 500 or placement < 1:
+            print("Placement must be a number between 1 and 500.")
+            continue
+        else:
+            break
+    new_row.append(placement)
+    while True:
+        try:
+            year = int(input("Year: "))
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        if year > 9999 or year < 1000:
+            print("Must be a 4 digit year.")
+            continue
+        else:
+            break
+    new_row.append(year)
+    while True:
+        try:
+            name = input("Album name: ")
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        else:
+            break
+    new_row.append(name)
+    while True:
+        try:
+            artist = input("Artist/band: ")
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        else:
+            break
+    new_row.append(artist)
+    while True:
+        try:
+            genre = input("Genre:")
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        else:
+            break
+    new_row.append(genre)
+    new_ws.append_row(new_row)
+    print(f"\nNew album added to worksheet {new_ws.title}\n")
+    print("1. Add another album\n2. Main menu")
+    choice = input()
+    while True:
+        if choice == "1":
+            add_album(ws)
+        elif choice == "2":
+            main_menu()
+            break
+        else:
+            print("Invalid input, try again")
 
 
-start_menu()
+if __name__ == "__main__":
+    main_menu()
