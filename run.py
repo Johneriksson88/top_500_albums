@@ -25,16 +25,21 @@ print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Ston
 def start_menu():
     while True:
         menu_choice = input(
-            "----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Quit\n")
+            "----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n5. Quit\n")
         if menu_choice == "1":
             print(tabulate(albumlist, headers=[
                   "Number", "Year", "Album", "Artist", "Genre"]))
             start_menu()
         elif menu_choice == "2":
             analysis_options()
+            break
         elif menu_choice == "3":
-            add_album()
+            new_list()
+            break
         elif menu_choice == "4":
+            add_to_list()
+            break
+        elif menu_choice == "5":
             break
         print("\nInvalid option, please try again.")
 
@@ -105,7 +110,7 @@ def top_10_year():
     top_1_year_int = top_1_year[1]
     print(tabulate(year_count, headers=["Year", "No. of placements"]))
     print(
-        f"\nThe most popular year was {top_1_year[0]} with {get_pct(get_int(top_1_year_int))}% of placements")
+        f"\nThe most popular year was {top_1_year[0]} with {get_pct(top_1_year_int)}% of placements")
     get_top_10()
 
 def top_10_decade():
@@ -167,12 +172,35 @@ def get_top_10():
             start_menu()
         print("\nInvalid option, please try again.")
 
-def add_album():
+def add_to_list():
+    print("Select a worksheet to add an album to:\n")
+    sheet_list = []
+    for spreadsheet in SHEET.worksheets():
+        sheet_list.append(spreadsheet.title)
+    num = 0
+    for sheet in sheet_list:
+        num += 1
+        print(f"{num}. {sheet}")
+    choice = input()
+    choice = int(choice)
+    selected_ws = ""
+    for i in sheet_list:
+        if choice == i:
+            selected_ws += sheet_list[i]
+    print(selected_ws)
+    
+        
+
+def new_list():
     list_name = input("Enter a name for your list:")
     new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
+    add_album(new_ws)
+
+def add_album(ws):
+    new_ws = ws
     while True:
-        placement = input("Enter a placement (a number between 1 and 500): ")
         new_row = []
+        placement = input("Enter a placement (a number between 1 and 500): ")
         new_row.append(placement)
         year = input("Year: ")
         new_row.append(year)
@@ -184,7 +212,7 @@ def add_album():
         new_row.append(genre)
         new_ws.append_row(new_row)
         print(f"New album added to worksheet {new_ws}")
-        choice = input("1. Add another album\n2. Main menu\n")
+        choice = input("\n1. Add another album\n2. Main menu\n")
         if choice == "2":
             start_menu()
 
