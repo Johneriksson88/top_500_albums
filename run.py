@@ -187,6 +187,9 @@ def add_album(ws):
         if placement > 500 or placement < 1:
             print("Placement must be a number between 1 and 500.")
             continue
+        elif str(placement) in new_ws.col_values(1):
+            print("Placement already taken, try again.")
+            continue
         else:
             break
     new_row.append(placement)
@@ -219,7 +222,7 @@ def add_album(ws):
             main_menu()
             break
         else:
-            print("Invalid input, try again")
+            print("Invalid input, try again.")
 
 
 if __name__ == "__main__":
