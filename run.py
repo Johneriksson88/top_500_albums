@@ -205,11 +205,29 @@ def add_album(ws):
         else:
             break
     new_row.append(year)
-    name = input("Album name: ")
+    while True:
+        name = input("Album name: ")
+        if len(name) == 0:
+            print("Album name cannot be empty, try again.")
+            continue
+        else:
+            break
     new_row.append(name)
-    artist = input("Artist/band: ")
+    while True:
+        artist = input("Artist/band: ")
+        if len(artist) == 0:
+            print("Artist/band name cannot be empty, try again.")
+            continue
+        else:
+            break
     new_row.append(artist)
-    genre = input("Genre:")
+    while True:
+        genre = input("Genre:")
+        if len(genre) == 0:
+            print("Genre cannot be empty, try again.")
+            continue
+        else:
+            break
     new_row.append(genre)
     new_ws.append_row(new_row)
     print(f"\nNew album added to worksheet {new_ws.title}\n")
