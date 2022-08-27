@@ -198,32 +198,11 @@ def add_album(ws):
         else:
             break
     new_row.append(year)
-    while True:
-        try:
-            name = input("Album name: ")
-        except ValueError:
-            print("Invalid input, try again.")
-            continue
-        else:
-            break
+    name = input("Album name: ")
     new_row.append(name)
-    while True:
-        try:
-            artist = input("Artist/band: ")
-        except ValueError:
-            print("Invalid input, try again.")
-            continue
-        else:
-            break
+    artist = input("Artist/band: ")
     new_row.append(artist)
-    while True:
-        try:
-            genre = input("Genre:")
-        except ValueError:
-            print("Invalid input, try again.")
-            continue
-        else:
-            break
+    genre = input("Genre:")
     new_row.append(genre)
     new_ws.append_row(new_row)
     print(f"\nNew album added to worksheet {new_ws.title}\n")
