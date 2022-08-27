@@ -163,27 +163,19 @@ def get_top_10():
         elif menu_choice == "5":
             analysis_options()
         elif menu_choice == "6":
-            start_menu()
-        print("\nInvalid option, please try again.")
+            main_menu()
+        else:
+            print("\nInvalid option, please try again.")
 
 def add_to_list():
-    print("Select a worksheet to add an album to:\n")
-    sheet_list = []
-    for spreadsheet in SHEET.worksheets():
-        sheet_list.append(spreadsheet.title)
-    num = 0
-    for sheet in sheet_list:
-        num += 1
-        print(f"{num}. {sheet}")
-    choice = input()
-    choice = int(choice)
-    selected_ws = ""
-    for i in sheet_list:
-        if choice == i:
-            selected_ws = sheet_list[choice]
-    print(selected_ws)
-    
-        
+    print("\nSelect a worksheet to add an album to:\n")
+    worksheets = SHEET.worksheets()
+    for num, ws in enumerate(worksheets[1:]):
+        print(f"{num+1}. {ws.title}")
+    choice = int(input())
+    selected_ws = worksheets[choice]
+    print(f"Selected {selected_ws.title}")
+    add_album(selected_ws)
 
 def new_list():
     list_name = input("Enter a name for your list:")
