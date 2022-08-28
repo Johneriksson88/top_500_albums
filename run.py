@@ -43,29 +43,33 @@ def main_menu():
             break
         print("\nInvalid option, please try again.")
 
+
 def analysis_options():
     while True:
         print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 list\n3.",
               "Get most occuring genre per decade\n4. Main menu")
-        menu_choice = input()
+        menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             search_artist()
         elif menu_choice == "2":
             get_top_10()
         elif menu_choice == "3":
             print("Decade  -  Artist")
-            #most_occurring_per_decade()
+            # most_occurring_per_decade()
         elif menu_choice == "4":
             main_menu()
-        
+
         print("\nInvalid option, please try again.")
 
+
 def search_artist():
-    
-    q = input("Enter an artist or a band: ").lower()
+
+    q = input("Enter an artist or a band: \n").lower()
     a = [row for row in albumlist if row[3].lower() == q]
-    print(tabulate(a, headers=["Placement", "Year", "Album", "Artist", "Genre"]))
+    print(tabulate(a, headers=["Placement",
+          "Year", "Album", "Artist", "Genre"]))
     analysis_options()
+
 
 def get_pct(int):
     """
@@ -73,6 +77,7 @@ def get_pct(int):
     """
     pct = int / 500 * 100
     return pct
+
 
 def top_10_artist():
     """
@@ -90,6 +95,7 @@ def top_10_artist():
     print(
         f"\nThe most popular artists were {', '.join(shared_first_place)} with {get_pct(no_placements)}% of placements each")
 
+
 def top_10_year():
     """
     Counts the number of values in the 2nd(year) column and prints the 10 most common years in a table
@@ -102,9 +108,9 @@ def top_10_year():
     print(
         f"\nThe most popular year was {top_1_year[0]} with {get_pct(no_placements)}% of placements")
 
-def top_10_decade():
 
-    """ 
+def top_10_decade():
+    """
     Converts the years into ints, extracts the decades and puts them into a list
     and prints a top list of the decades represented
     """
@@ -124,8 +130,9 @@ def top_10_decade():
     print(
         f"\nThe most popular decade was {decade} with {get_pct(no_placements)}% of placements")
 
+
 def top_10_genre():
-    """ 
+    """
     Counts the number of values in the 5th(year) column and prints the 10 most common genres in a table
     and a line presenting the most popular genre and the percentage of its placements
     """
@@ -137,13 +144,14 @@ def top_10_genre():
     print(
         f"\nThe most popular genre was {genre} with {get_pct(no_placements)}% of placements")
 
+
 def get_top_10():
     """
     The menu for "Get top 10 lists"
     """
     while True:
         print("\n---- TOP 10 LISTS ----\n1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n6. Main menu")
-        menu_choice = input()
+        menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             top_10_artist()
         elif menu_choice == "2":
@@ -159,20 +167,23 @@ def get_top_10():
         else:
             print("\nInvalid option, please try again.")
 
+
 def add_to_list():
     print("\nSelect a worksheet to add an album to:\n")
     worksheets = SHEET.worksheets()
     for num, ws in enumerate(worksheets[1:]):
         print(f"{num+1}. {ws.title}")
-    choice = int(input())
+    choice = int(input("Enter the number of the list you'd like to add to: \n"))
     selected_ws = worksheets[choice]
     print(f"Selected {selected_ws.title}")
     add_album(selected_ws)
 
+
 def new_list():
-    list_name = input("Enter a name for your list:")
+    list_name = input("Enter a name for your list: \n")
     new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
     add_album(new_ws)
+
 
 def add_album(ws):
     new_ws = ws
@@ -180,7 +191,8 @@ def add_album(ws):
     new_row = []
     while True:
         try:
-            placement = int(input("Enter a placement (a number between 1 and 500): "))
+            placement = int(
+                input("Enter a placement (a number between 1 and 500): \n"))
         except ValueError:
             print("Invalid input, try again.")
             continue
@@ -195,7 +207,7 @@ def add_album(ws):
     new_row.append(placement)
     while True:
         try:
-            year = int(input("Year: "))
+            year = int(input("Year: \n"))
         except ValueError:
             print("Invalid input, try again.")
             continue
@@ -206,7 +218,7 @@ def add_album(ws):
             break
     new_row.append(year)
     while True:
-        name = input("Album name: ")
+        name = input("Album name: \n")
         if len(name) == 0:
             print("Album name cannot be empty, try again.")
             continue
@@ -214,7 +226,7 @@ def add_album(ws):
             break
     new_row.append(name)
     while True:
-        artist = input("Artist/band: ")
+        artist = input("Artist/band: \n")
         if len(artist) == 0:
             print("Artist/band name cannot be empty, try again.")
             continue
@@ -222,7 +234,7 @@ def add_album(ws):
             break
     new_row.append(artist)
     while True:
-        genre = input("Genre:")
+        genre = input("Genre: \n")
         if len(genre) == 0:
             print("Genre cannot be empty, try again.")
             continue
@@ -232,7 +244,7 @@ def add_album(ws):
     new_ws.append_row(new_row)
     print(f"\nNew album added to worksheet {new_ws.title}\n")
     print("1. Add another album\n2. Main menu")
-    choice = input()
+    choice = input("Enter menu choice: \n")
     while True:
         if choice == "1":
             add_album(ws)
