@@ -203,23 +203,60 @@ def get_top_10():
 
 
 def add_to_list():
+    """
+    Lets the user add an album to an existing list.
+    """
     print("\nSelect a worksheet to add an album to:\n")
     worksheets = SHEET.worksheets()
+    # Loop thorugh the worksheets, skipping the original top 500 album list (at index 0) since we don't want to add an album to the original list.
     for num, ws in enumerate(worksheets[1:]):
         print(f"{num+1}. {ws.title}")
-    choice = int(input("Enter the number of the list you'd like to add to: \n"))
-    selected_ws = worksheets[choice]
+    while True:
+        try:
+            choice = int(input("Enter the number of the list you'd like to add to: \n"))
+            selected_ws = worksheets[choice]  
+        except ValueError:
+            print("Invalid input, try again.")
+            continue
+        except IndexError:
+            print("Selected worksheet does not exist, try again.")
+            continue
+        else:
+            break
     print(f"Selected {selected_ws.title}")
     add_album(selected_ws)
 
 
 def new_list():
-    list_name = input("Enter a name for your list: \n")
+    """
+    Lets the user create a new list, and gives him/her the option to add an album to that list.
+    """
+    while True:
+        list_name = input("Enter a name for your list: \n")
+        if len(list_name) == 0:
+            print("List must have a name, please try again.")
+            continue
+        else:
+            break
+    
     new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
-    add_album(new_ws)
+    print(f"Created new list: {new_ws.title}\n")
+    choice = input("1. Add an album to the new list\n2. Main menu\n")
+    if choice == "1":
+        add_album(new_ws)
+    elif choice == "2":
+        main_menu()
+    else:
+        print("Invalid input, try again.")
+    
 
 
 def add_album(ws):
+    """
+    Is called either from the new_list function if the user chooses to add an album to the new list directly,
+    or from the add_to_list function.
+    Lets the user create a new row in chosen list, with 5 column values: placement, year, album name, artist/band and genre.
+    """
     new_ws = ws
 
     new_row = []
