@@ -25,7 +25,7 @@ print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Ston
 def main_menu():
     while True:
         menu_choice = input(
-            "\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n5. Quit\n")
+            "\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
         if menu_choice == "1":
             print(tabulate(albumlist, headers=[
                   "Number", "Year", "Album", "Artist", "Genre"]))
@@ -39,7 +39,7 @@ def main_menu():
         elif menu_choice == "4":
             add_to_list()
             break
-        elif menu_choice == "5":
+        elif menu_choice == "0":
             break
         print("\nInvalid option, please try again.")
 
@@ -47,7 +47,7 @@ def main_menu():
 def analysis_options():
     while True:
         print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 list\n3.",
-              "Get most occuring genre per decade\n4. Main menu")
+              "Get most occuring genre per decade\n0. Main menu")
         menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             search_artist()
@@ -56,7 +56,7 @@ def analysis_options():
         elif menu_choice == "3":
             print("Decade  -  Artist")
             # most_occurring_per_decade()
-        elif menu_choice == "4":
+        elif menu_choice == "0":
             main_menu()
 
         print("\nInvalid option, please try again.")
@@ -150,7 +150,7 @@ def get_top_10():
     The menu for "Get top 10 lists"
     """
     while True:
-        print("\n---- TOP 10 LISTS ----\n1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n6. Main menu")
+        print("\n---- TOP 10 LISTS ----\n1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n0. Main menu")
         menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             top_10_artist()
@@ -162,7 +162,7 @@ def get_top_10():
             top_10_genre()
         elif menu_choice == "5":
             analysis_options()
-        elif menu_choice == "6":
+        elif menu_choice == "0":
             main_menu()
         else:
             print("\nInvalid option, please try again.")
