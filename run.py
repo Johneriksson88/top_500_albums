@@ -27,13 +27,12 @@ def main_menu():
     Starts the program and shows the menu choices to go forward in the program.
     """
 
-    print("\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
+    print("\n----  MAIN MENU ----\n\n1. View lists\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
     while True:
         menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
-            print(tabulate(albumlist, headers=[
-                  "Number", "Year", "Album", "Artist", "Genre"]))
-            main_menu()
+            view_lists()
+            break
         elif menu_choice == "2":
             analysis_options()
             break
@@ -201,6 +200,42 @@ def get_top_10():
         else:
             print("\nInvalid option, please try again.")
 
+def view_lists():
+    print("\n**** VIEW LISTS ****\n")
+    print("1. View the Rolling Stone top 500 albums list\n2. View a user created list\n")
+    while True:
+        choice = input("Enter menu choice:\n")
+        if choice == "1":
+            print(tabulate(albumlist, headers=["Number", "Year", "Album", "Artist", "Genre"]))
+            break
+        elif choice == "2":
+            worksheets = SHEET.worksheets()
+            for num, ws in enumerate(worksheets[1:]):
+                print(f"{num+1}. {ws.title}")
+            while True:
+                try:
+                    choice = int(input("Enter the number of the list you'd like to view: \n"))
+                    selected_ws = worksheets[choice]  
+                except ValueError:
+                    print("Invalid input, please try again.")
+                    continue
+                except IndexError:
+                    print("Selected worksheet does not exist, please try again.")
+                    continue
+                else:
+                    break
+            print(tabulate(selected_ws.get_all_values(), headers=["Placement", "Year", "Album", "Artist", "Genre"]))
+            break
+    print("1. View another list\n2. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            view_lists()
+        elif choice == "2":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
 
 def add_to_list():
     """
@@ -223,7 +258,7 @@ def add_to_list():
             continue
         else:
             break
-    print(f"Selected {selected_ws.title}")
+    print(f"Selected {selected_ws.title}.")
     add_album(selected_ws)
 
 
@@ -249,8 +284,6 @@ def new_list():
     else:
         print("Invalid input, try again.")
     
-
-
 def add_album(ws):
     """
     Is called either from the new_list function if the user chooses to add an album to the new list directly,
