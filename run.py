@@ -19,10 +19,13 @@ worksheet = SHEET.worksheet('albumlist')
 albumlist = worksheet.get_all_values()
 
 print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Stones top 500 albums list.\nThe list was published in 2003 with a slight update 2012.",
-      "\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.\n" + "*" * 70 + "\n")
+      "\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.\n\n" + "*" * 70 + "\n")
 
 
 def main_menu():
+    """
+    Function that starts the program, and shows the menu choices to go forward in the program.
+    """
     while True:
         menu_choice = input(
             "\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
