@@ -24,11 +24,12 @@ print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Ston
 
 def main_menu():
     """
-    Function that starts the program, and shows the menu choices to go forward in the program.
+    Starts the program and shows the menu choices to go forward in the program.
     """
+
+    print("\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
     while True:
-        menu_choice = input(
-            "\n----  MAIN MENU ----\n\n1. See the whole list\n2. Analysis options\n3. Make your own list\n4. Add album(s) to existing list\n0. Quit\n")
+        menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             print(tabulate(albumlist, headers=[
                   "Number", "Year", "Album", "Artist", "Genre"]))
