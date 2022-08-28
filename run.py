@@ -48,35 +48,57 @@ def main_menu():
 
 
 def analysis_options():
+    """
+    Menu for the two analysis options: Search artist and Get top 10 lists.
+    """
+
+    print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 lists\n0. Main menu")
     while True:
-        print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 list\n3.",
-              "Get most occuring genre per decade\n0. Main menu")
         menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
             search_artist()
         elif menu_choice == "2":
             get_top_10()
-        elif menu_choice == "3":
-            print("Decade  -  Artist")
-            # most_occurring_per_decade()
         elif menu_choice == "0":
             main_menu()
-
         print("\nInvalid option, please try again.")
 
 
 def search_artist():
-
-    q = input("Enter an artist or a band: \n").lower()
-    a = [row for row in albumlist if row[3].lower() == q]
-    print(tabulate(a, headers=["Placement",
-          "Year", "Album", "Artist", "Genre"]))
-    analysis_options()
+    """
+    Lets the user search the top 500 album list for an artist/band, and then shows a tabulated list of 
+    all the instances of placements on the top 500 list of that artist/band.
+    Converts input and strings it reads to lower case to make it more versatile.
+    """
+    print("\nHere you can search for an artist or band and see a list of the album(s) they have on the list.\nInput can be lower case.\n")
+    while True:    
+        while True:
+            q = input("Enter an artist or a band: \n").lower()
+            if len(q) == 0:
+                print("Input cannot be empty, please try again.")
+                continue
+            else:
+                break
+        a = [row for row in albumlist if row[3].lower() == q]
+        if not a:
+            print("No such artist/band, please try again.")
+            continue
+        else:
+            print(tabulate(a, headers=["Placement",
+            "Year", "Album", "Artist", "Genre"]))
+            while True:
+                choice = input("1. Search again\n2. Back to analysis options\n0. Main menu\n")
+                if choice == "1":
+                    break
+                elif choice == "2":
+                    analysis_options()
+                elif choice == "0":
+                    main_menu()
 
 
 def get_pct(int):
     """
-    Takes a value and turns it in to a percentage of the 500 placements
+    Takes a value and returns its percentage out of the 500 placements.
     """
     pct = int / 500 * 100
     return pct
