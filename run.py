@@ -19,7 +19,8 @@ worksheet = SHEET.worksheet('albumlist')
 albumlist = worksheet.get_all_values()
 
 print("*" * 70 + "\n\n" + "Welcome to a program for analysis of The Rolling Stones top 500 albums list.\nThe list was published in 2003 with a slight update 2012.",
-      "\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.\n\n" + "*" * 70 + "\n")
+      "\nIt is based on weighted votes from selected musicians, critics, and industry figures, and compiled into a list by the music magazine 'The Rolling Stone'.\n\n" + "*" * 70)
+print("\nIn the menu below you can explore the options of this program.\n")
 
 
 def main_menu():
@@ -290,9 +291,14 @@ def new_list():
             continue
         else:
             break
+        
+    try:
+        new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
+        print(f"Created new list: {new_ws.title}\n")
+    except gspread.exceptions.APIError as e:
+        print(f'A sheet with the name {list_name} already exists. Please enter another name.')
+        new_list()
 
-    new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
-    print(f"Created new list: {new_ws.title}\n")
     choice = input(f"1. Add an album to {new_ws.title}\n2. Main menu\n")
     if choice == "1":
         add_album(new_ws)

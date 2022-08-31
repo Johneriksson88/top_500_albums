@@ -1,10 +1,7 @@
-# Love Running
+# Top 500 albums analysis program
 
-In this section, you will include one or two paragraphs providing an overview of your project. Essentially, this part is your sales pitch. At this stage, you should have a name for your project so use it! Don’t introduce the project as a Portfolio project for the diploma. In this section, describe what the project hopes to accomplish, who it is intended to target and how it will be useful to the target audience. 
-
-For example; Love Running is a site that hopes to help keep people motivated to meet up for runs on a regular basis in Dublin, Ireland. The site will be targeted toward runners who are looking for a way to socialise and keep themselves fit. Love Running will be useful for runners to see exactly when and where they should be to join the running club. 
-
-![Responsice Mockup](https://github.com/lucyrush/readme-template/blob/master/media/love_running_mockup.png)
+The top 500 albums analysis program (henceforth referred to as T5-AAP) is a terminal based program that lets the user gleen insights from the Rolling Stone top 500 albums list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
+![r500](/workspace/top_500_albums/assets/images/rolling_stone.jpg)
 
 ## Features 
 
@@ -12,10 +9,11 @@ In this section, you should go over the different parts of your project, and des
 
 ### Existing Features
 
-- __Navigation Bar__
+- __Welcome text__
+  - The user is greeted by a welcome text explaining what the top 500 albums list is and how to go forward in the program.
+- __Main menu__
 
-  - Featured on all three pages, the full responsive navigation bar includes links to the Logo, Home page, Gallery and Sign Up page and is identical in each page to allow for easy navigation.
-  - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
+  - The main menu is the fir 
 
 ![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
 
