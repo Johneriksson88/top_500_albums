@@ -71,7 +71,7 @@ def search_artist():
     Converts input and strings it reads to lower case to make it more versatile.
     """
     print("\nHere you can search for an artist or band and see a list of the album(s) they have on the list.\nInput can be lower case.\n")
-    while True:    
+    while True:
         while True:
             q = input("Enter an artist or a band: \n").lower()
             if len(q) == 0:
@@ -85,9 +85,10 @@ def search_artist():
             continue
         else:
             print(tabulate(a, headers=["Placement",
-            "Year", "Album", "Artist", "Genre"]))
+                                       "Year", "Album", "Artist", "Genre"]))
             while True:
-                choice = input("1. Search again\n2. Back to analysis options\n0. Main menu\n")
+                choice = input(
+                    "1. Search again\n2. Back to analysis options\n0. Main menu\n")
                 if choice == "1":
                     break
                 elif choice == "2":
@@ -200,13 +201,15 @@ def get_top_10():
         else:
             print("\nInvalid option, please try again.")
 
+
 def view_lists():
     print("\n**** VIEW LISTS ****\n")
-    print("1. View the Rolling Stone top 500 albums list\n2. View a user created list\n")
+    print("1. View the Rolling Stone top 500 albums list\n2. View a user created list\n0. Main menu")
     while True:
         choice = input("Enter menu choice:\n")
         if choice == "1":
-            print(tabulate(albumlist, headers=["Number", "Year", "Album", "Artist", "Genre"]))
+            print(tabulate(albumlist, headers=[
+                  "Number", "Year", "Album", "Artist", "Genre"]))
             break
         elif choice == "2":
             worksheets = SHEET.worksheets()
@@ -214,8 +217,9 @@ def view_lists():
                 print(f"{num+1}. {ws.title}")
             while True:
                 try:
-                    choice = int(input("Enter the number of the list you'd like to view: \n"))
-                    selected_ws = worksheets[choice]  
+                    choice = int(
+                        input("Enter the number of the list you'd like to view: \n"))
+                    selected_ws = worksheets[choice]
                 except ValueError:
                     print("Invalid input, please try again.")
                     continue
@@ -224,18 +228,25 @@ def view_lists():
                     continue
                 else:
                     break
-            print(tabulate(selected_ws.get_all_values(), headers=["Placement", "Year", "Album", "Artist", "Genre"]))
+            print(tabulate(selected_ws.get_all_values(), headers=[
+                  "Placement", "Year", "Album", "Artist", "Genre"]))
             break
-    print("1. View another list\n2. Main menu\n")
-    choice = input("Enter menu choice:\n")
-    while True:
-        if choice == "1":
-            view_lists()
-        elif choice == "2":
+        elif choice == "0":
             main_menu()
         else:
             print("Invalid input, please try again.")
             continue
+    print("1. View another list\n0. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            view_lists()
+        elif choice == "0":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
+
 
 def add_to_list():
     """
@@ -248,8 +259,9 @@ def add_to_list():
         print(f"{num+1}. {ws.title}")
     while True:
         try:
-            choice = int(input("Enter the number of the list you'd like to add to: \n"))
-            selected_ws = worksheets[choice]  
+            choice = int(
+                input("Enter the number of the list you'd like to add to: \n"))
+            selected_ws = worksheets[choice]
         except ValueError:
             print("Invalid input, try again.")
             continue
@@ -273,17 +285,18 @@ def new_list():
             continue
         else:
             break
-    
+
     new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
     print(f"Created new list: {new_ws.title}\n")
-    choice = input("1. Add an album to the new list\n2. Main menu\n")
+    choice = input(f"1. Add an album to {new_ws.title}\n2. Main menu\n")
     if choice == "1":
         add_album(new_ws)
     elif choice == "2":
         main_menu()
     else:
         print("Invalid input, try again.")
-    
+
+
 def add_album(ws):
     """
     Is called either from the new_list function if the user chooses to add an album to the new list directly,
