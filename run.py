@@ -51,8 +51,8 @@ def analysis_options():
     """
     Menu for the two analysis options: Search artist and Get top 10 lists.
     """
-
-    print("\n ---- ANALYSIS OPTIONS ---- \n1. Search for artist\n2. Get top 10 lists\n0. Main menu")
+    print("\n**** ANALYSIS OPTIONS ****\n")
+    print("1. Search by artist\n2. Get top 10 lists\n0. Main menu")
     while True:
         menu_choice = input("Enter menu choice: \n")
         if menu_choice == "1":
@@ -70,7 +70,8 @@ def search_artist():
     all the instances of placements on the top 500 list of that artist/band.
     Converts input and strings it reads to lower case to make it more versatile.
     """
-    print("\nHere you can search for an artist or band and see a list of the album(s) they have on the list.\nInput can be lower case.\n")
+    print("\n**** SEARCH BY ARTIST ****\n")
+    print("Here you can search for an artist or band and see a list of the album(s) they have on the list.\nInput can be lower case.\n")
     while True:
         while True:
             q = input("Enter an artist or a band: \n").lower()
@@ -103,6 +104,31 @@ def get_pct(int):
     """
     pct = int / 500 * 100
     return pct
+
+
+def get_top_10():
+    """
+    The menu for "Get top 10 lists"
+    """
+    print("\nBelow you can find top 10 lists of the most popular artists/bands, years, decades and genres on the list.\n")
+    print("\n---- TOP 10 LISTS ----\n")
+    print("1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n0. Main menu")
+    while True:
+        menu_choice = input("Enter menu choice: \n")
+        if menu_choice == "1":
+            top_10_artist()
+        elif menu_choice == "2":
+            top_10_year()
+        elif menu_choice == "3":
+            top_10_decade()
+        elif menu_choice == "4":
+            top_10_genre()
+        elif menu_choice == "5":
+            analysis_options()
+        elif menu_choice == "0":
+            main_menu()
+        else:
+            print("\nInvalid option, please try again.")
 
 
 def top_10_artist():
@@ -178,30 +204,6 @@ def top_10_genre():
     get_top_10()
 
 
-def get_top_10():
-    """
-    The menu for "Get top 10 lists"
-    """
-    print("\nBelow you can find top 10 lists of the most popular artists/bands, years, decades and genres on the list.\n")
-    print("\n---- TOP 10 LISTS ----\n1. Artist\n2. Year\n3. Decade\n4. Genre\n5. Back\n0. Main menu")
-    while True:
-        menu_choice = input("Enter menu choice: \n")
-        if menu_choice == "1":
-            top_10_artist()
-        elif menu_choice == "2":
-            top_10_year()
-        elif menu_choice == "3":
-            top_10_decade()
-        elif menu_choice == "4":
-            top_10_genre()
-        elif menu_choice == "5":
-            analysis_options()
-        elif menu_choice == "0":
-            main_menu()
-        else:
-            print("\nInvalid option, please try again.")
-
-
 def view_lists():
     print("\n**** VIEW LISTS ****\n")
     print("1. View the Rolling Stone top 500 albums list\n2. View a user created list\n0. Main menu")
@@ -212,6 +214,7 @@ def view_lists():
                   "Number", "Year", "Album", "Artist", "Genre"]))
             break
         elif choice == "2":
+            print("\n**** SELECT LIST ****\n\n")
             worksheets = SHEET.worksheets()
             for num, ws in enumerate(worksheets[1:]):
                 print(f"{num+1}. {ws.title}")
@@ -252,7 +255,8 @@ def add_to_list():
     """
     Lets the user add an album to an existing list.
     """
-    print("\nSelect a worksheet to add an album to:\n")
+    print("\n**** ADD ALBUM TO EXISTING LIST ****\n")
+    print("Select a worksheet to add an album to:\n")
     worksheets = SHEET.worksheets()
     # Loop thorugh the worksheets, skipping the original top 500 album list (at index 0) since we don't want to add an album to the original list.
     for num, ws in enumerate(worksheets[1:]):
@@ -260,7 +264,7 @@ def add_to_list():
     while True:
         try:
             choice = int(
-                input("Enter the number of the list you'd like to add to: \n"))
+                input("Enter the corresponding number of the list you'd like to add to: \n"))
             selected_ws = worksheets[choice]
         except ValueError:
             print("Invalid input, try again.")
@@ -278,6 +282,7 @@ def new_list():
     """
     Lets the user create a new list, and gives him/her the option to add an album to that list.
     """
+    print("\n**** CREATE NEW LIST ****\n")
     while True:
         list_name = input("Enter a name for your list: \n")
         if len(list_name) == 0:
@@ -303,6 +308,7 @@ def add_album(ws):
     or from the add_to_list function.
     Lets the user create a new row in chosen list, with 5 column values: placement, year, album name, artist/band and genre.
     """
+    print("\n**** ADD ALBUM ****\n\n")
     new_ws = ws
 
     new_row = []
@@ -359,13 +365,13 @@ def add_album(ws):
             break
     new_row.append(genre)
     new_ws.append_row(new_row)
-    print(f"\nNew album added to worksheet {new_ws.title}\n")
-    print("1. Add another album\n2. Main menu")
+    print(f"\nAlbum {name} added to worksheet {new_ws.title}\n")
+    print("1. Add another album\n0. Main menu")
     choice = input("Enter menu choice: \n")
     while True:
         if choice == "1":
             add_album(ws)
-        elif choice == "2":
+        elif choice == "0":
             main_menu()
             break
         else:
