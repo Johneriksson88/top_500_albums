@@ -10,89 +10,76 @@ In this section, you should go over the different parts of your project, and des
 ### Existing Features
 
 - __Welcome text__
+
   - The user is greeted by a welcome text explaining what the top 500 albums list is and how to go forward in the program.
+
 - __Main menu__
 
-  - The main menu is the fir 
+  ![Main Menu](/workspace/top_500_albums/assets/images/main_menu.png)
 
-![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
+  - The main menu, which can be reached from all sub-menus, lets the user go forward in the program. It has the options View list, Analysis options, Make your own list, Add album(s) to list and quit, which shuts the program down.
 
-- __The landing page image__
+  - __View lists__
 
-  - The landing includes a photograph with text overlay to allow the user to see exactly which location this site would be applicable to. 
-  - This section introduces the user to Love Running with an eye catching animation to grab their attention
+    ![View Lists](/workspace/top_500_albums/assets/images/view_lists.png)
 
-![Landing Page](https://github.com/lucyrush/readme-template/blob/master/media/love_running_landing.png)
+    - The view lists menu gives the user two options: to view the original Rolling Stone top 500 albums list or view a list which displays the user created worksheets. The data is presented in the terminal in a graphic table.
+  
+  - __Analysis options__
 
-- __Club Ethos Section__
+    ![Analysis Options](/workspace/top_500_albums/assets/images/analysis_options.png)
 
-  - The club ethos section will allow the user to see the benefits of joining the Love Running meetups, as well as the benefits of running overall. 
-  - This user will see the value of signing up for the Love Running meetups. This should encourage the user to consider running as their form of exercise. 
+    - The analysis options menu lets the user either search the original list by artist, or go into the Get top 10 lists menu.
 
-![Club Ethos](https://github.com/lucyrush/readme-template/blob/master/media/love_running_ethos.png)
+      - __Get top 10 lists__
 
-- __Meetup Times section__
+       - Here the user can choose to see a static top 10 list over the most represented artist, years, decades and genres.
+       - Note that the top list for decades only contains 7 decades since there are no more decades represented.
 
-  - This section will allow the user to see exactly when the meetups will happen, where they will be located and how long the run will be in kilometers. 
-  - This section will be updated as these times change to keep the user up to date. 
+  - __Make your own list__
 
-![Meetup Times](https://github.com/lucyrush/readme-template/blob/master/media/love_running_times.png)
+    - Lets the user create a new worksheet in order to create their own toplist of albums.
+    - Gives the user the option to directly start adding albums to the new list.
+  
+  - __Add album(s) to existing list__
 
-- __The Footer__ 
+    - Lets the user add albums to a user created list.
+    - Note that the user cannot add any albums to the original Rolling Stones list.
 
-  - The footer section includes links to the relevant social media sites for Love Running. The links will open to a new tab to allow easy navigation for the user. 
-  - The footer is valuable to the user as it encourages them to keep connected via social media
-
-![Footer](https://github.com/lucyrush/readme-template/blob/master/media/love_running_footer.png)
-
-- __Gallery__
-
-  - The gallery will provide the user with supporting images to see what the meet ups look like. 
-  - This section is valuable to the user as they will be able to easily identify the types of events the organisation puts together. 
-
-![Gallery](https://github.com/lucyrush/readme-template/blob/master/media/love_running_gallery.png)
-
-- __The Sign Up Page__
-
-  - This page will allow the user to get signed up to Love Running to start their running journey with the community. The user will be able specify if they would like to take part in road, trail or both types of running. The user will be asked to submit their full name and email address. 
-
-![Sign Up](https://github.com/lucyrush/readme-template/blob/master/media/love_running_signup.png)
-
-For some/all of your features, you may choose to reference the specific project files that implement them.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
 
-- Another feature idea
+- Extend search function to all columns (placement, year, album name and genre) and also to all worksheets.
+- More advanced static analysis, like for example most popular genre per decade
+
+## Planning
+
+The planning started with finding an interesting piece of data to analyze. I looked through numbers of surveys on [Data.world](https://data.world/) and on [Kaggle](https://www.kaggle.com/). Being a music lover and a musician i chose the "Rolling Stone top 500 greatest albums of all time".
+Next i made a flowchart on [Lucidchart](https://lucid.app/).
+
+
 
 ## Testing 
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
+The program was continuosly tested essentially every new few lines of code, to catch errors as soon as possible. 
+I let my mentor, friends and family test the program to give input regarding understadability and presentation.
+Before deployment i went through every menu and every input statement to make sure the validation caught every kind of erroneus or empty input. Alot of experimenting with while-loops was done to get the optimal flow of input validation in both presentation and readability of code.
+For example, i only in the end realized that there was an APIError when trying to add a new worksheet (list) with and existing name.
 
 ### Validator Testing 
 
-- HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+The code was put through [The pep8online validator](http://pep8online.com/) and only generated the errors "Line too long", which I've learned from others does not affect the functionality of the code.
 
 ### Unfixed Bugs
 
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+When running the program in the browser terminal interface through Heroku, the number of lines in the tabulated presentation of the top original top 500 list exceeds the number of scrollable lines in the browser terminal. This means that the user won't be able to see placements 1-43. However, this was not anticipated in the inception of this project and when i realized this, at the very end of the project, it was simply too late to go back. Since all testing up to the point of deployment was done in the GitPod terminal and it worked there, this is by no means a flaw of this program, but rather of the browser terminal used to present the project, of which i have no control.
+The lesson i learned by this is to in the future start by deploying first and do the testing in the end environment.
 
 ## Deployment
 
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows: 
+- The site was deployed to Heroku. The steps to deploy are as follows: 
   - In the GitHub repository, navigate to the Settings tab 
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
@@ -101,7 +88,7 @@ The live link can be found here - https://code-institute-org.github.io/love-runn
 
 
 ## Credits 
-
+https://www.kaggle.com/datasets/notgibs/500-greatest-albums-of-all-time-rolling-stone
 In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
 
 You can break the credits section up into Content and Media, depending on what you have included in your project. 
