@@ -1,46 +1,49 @@
 # Top 500 albums analysis program
 
-The top 500 albums analysis program (henceforth referred to as T5-AAP) is a terminal based program that lets the user gleen insights from the Rolling Stone top 500 albums list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
-![r500](/workspace/top_500_albums/assets/images/rolling_stone.jpg)
+The top 500 albums analysis program (in short T5-AAP) is a terminal based program that lets the user gleen insights from The Rolling Stone Greatest 500 Albums Of All Time list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
+
+![r500](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/rolling_stone.jpg?raw=true)
 
 ## Features 
-
-In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 ### Existing Features
 
 - __Welcome text__
 
-  - The user is greeted by a welcome text explaining what the top 500 albums list is and how to go forward in the program.
+  - The user is greeted by a welcome text explaining what The Rolling Stone Greatest 500 Albums Of All Time list is and how to go forward in the program.
 
 - __Main menu__
 
-  ![Main Menu](/workspace/top_500_albums/assets/images/main_menu.png)
-
   - The main menu, which can be reached from all sub-menus, lets the user go forward in the program. It has the options View list, Analysis options, Make your own list, Add album(s) to list and quit, which shuts the program down.
+
+![Main Menu](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/main_menu.png?raw=true)
 
   - __View lists__
 
-    ![View Lists](/workspace/top_500_albums/assets/images/view_lists.png)
+    ![View Lists](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/view_lists.png?raw=true)
 
     - The view lists menu gives the user two options: to view the original Rolling Stone top 500 albums list or view a list which displays the user created worksheets. The data is presented in the terminal in a graphic table.
+
   
   - __Analysis options__
 
-    ![Analysis Options](/workspace/top_500_albums/assets/images/analysis_options.png)
+    ![Analysis Options](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/analysis_options.png?raw=true)
 
     - The analysis options menu lets the user either search the original list by artist, or go into the Get top 10 lists menu.
+
 
       - __Get top 10 lists__
 
        - Here the user can choose to see a static top 10 list over the most represented artist, years, decades and genres.
        - Note that the top list for decades only contains 7 decades since there are no more decades represented.
 
+
   - __Make your own list__
 
     - Lets the user create a new worksheet in order to create their own toplist of albums.
     - Gives the user the option to directly start adding albums to the new list.
   
+
   - __Add album(s) to existing list__
 
     - Lets the user add albums to a user created list.
@@ -54,10 +57,12 @@ In this section, you should go over the different parts of your project, and des
 
 ## Planning
 
-The planning started with finding an interesting piece of data to analyze. I looked through numbers of surveys on [Data.world](https://data.world/) and on [Kaggle](https://www.kaggle.com/). Being a music lover and a musician i chose the "Rolling Stone top 500 greatest albums of all time".
+The planning started with finding an interesting piece of data to analyze. I looked through numbers of surveys on [Data.world](https://data.world/) and on [Kaggle](https://www.kaggle.com/). Being a music lover and a musician i chose the The Rolling Stone Greatest 500 Albums Of All Time list.
 Next i made a flowchart on [Lucidchart](https://lucid.app/).
 
+![flowchart](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/flowchart.png?raw=true)
 
+During developing the program and testing, more ideas came to be implemented in the program and some original ideas removed so the flowchart is an original representation of the idea, but does not fully correspond to the finished project. For example the "view most occurring per decade" option was removed.
 
 ## Testing 
 
