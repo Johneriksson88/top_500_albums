@@ -314,7 +314,7 @@ def add_album(ws):
     or from the add_to_list function.
     Lets the user create a new row in chosen list, with 5 column values: placement, year, album name, artist/band and genre.
     """
-    print("\n**** ADD ALBUM ****\n\n")
+    print("\n**** ADD ALBUM ****\n")
     new_ws = ws
 
     new_row = []

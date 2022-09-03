@@ -69,7 +69,7 @@ During developing the program and testing, more ideas came to be implemented in 
 The program was continuosly tested essentially every new few lines of code, to catch errors as soon as possible. 
 I let my mentor, friends and family test the program to give input regarding understadability and presentation.
 Before deployment i went through every menu and every input statement to make sure the validation caught every kind of erroneus or empty input. Alot of experimenting with while-loops was done to get the optimal flow of input validation in both presentation and readability of code.
-For example, i only in the end realized that there was an APIError when trying to add a new worksheet (list) with and existing name.
+For example, i only in the end realized that there was an APIError when trying to add a new worksheet (list) with an existing name.
 
 ### Validator Testing 
 
@@ -85,46 +85,31 @@ The lesson i learned by this is to in the future start by deploying first and do
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
 
 - The site was deployed to Heroku. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+  - In the Heroku dashboard, click create app and name the app accordingly. 
 
-The live link can be found here - https://code-institute-org.github.io/love-running-2.0/index.html 
+  - While in the project page, go to Settings tab.
+    - Click Reveal config vars and add two config vars:
+      - First vars are: KEY: CREDS, VALUE: contents of the creds.json file.
+      - Add a last config var with the content KEY: PORT, VALUE: 8000.
+
+    - Go to the Buildpacks section and click add buildpack.
+      - Add python and node.js.
+      - It's important that the buildpacks show up in this order, python on top and nodejs below.
+
+  - Go to the Deploy tab.
+    - Select GitHub as deployment method
+    - In the Connect to GitHub section, search for your repository name and click connect.
+    - Scroll down to the deploy sections. If desired click Enable Automatic Deploys (this will automatically deploy every time you push a new change to GitHub)
+    - I chose to manually deploy, which is below Automatic Deploys. This will deploy the project.
+
+The live link can be found here - https://top-500-albums.herokuapp.com/ 
 
 
 ## Credits 
-https://www.kaggle.com/datasets/notgibs/500-greatest-albums-of-all-time-rolling-stone
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
 
 ### Content 
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- The original Rolling Stone Greatest 500 Albums list was created by:
+Jonathan Bernstein, Pat Blashill, Jon Blistein, Nathan Brackett, David Browne, Anthony DeCurtis, Matt Diehl, Jon Dolan, Chuck Eddy, Ben Edmonds, Gavin Edwards, Jenny Eliscu, Brenna Ehrlrich, Suzy Exposito, David Fricke, Elisa Gardner, Holly George-Warren, Andy Greene, Kory Grow, Will Hermes, Brian Hiatt, Christian Hoard, Charles Holmes, Mark Kemp, Greg Kot, Elias Leight, Joe Levy, Angie Martoccio, David McGee, Chris Molanphy, Tom Moon, Jason Newman, Rob O’Connor, Park Puterbaugh, Jody Rosen, Austin Scaggs, Karen Schoemer, Bud Scoppa, Claire Shaffer, Rob Sheffield, Hank Shteamer, Brittany Spanos, Rob Tannenbaum, David Thigpen, Simon Vozick-Levinson, Barry Walters, Jonah Weiner
 
-### Media
-
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
-
-
-Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
-
-## Other General Project Advice
-
-Below you will find a couple of extra tips that may be helpful when completing your project. Remember that each of these projects will become part of your final portfolio so it’s important to allow enough time to showcase your best work! 
-
-- One of the most basic elements of keeping a healthy commit history is with the commit message. When getting started with your project, read through [this article](https://chris.beams.io/posts/git-commit/) by Chris Beams on How to Write  a Git Commit Message 
-  - Make sure to keep the messages in the imperative mood 
-
-- When naming the files in your project directory, make sure to consider meaningful naming of files, point to specific names and sections of content.
-  - For example, instead of naming an image used ‘image1.png’ consider naming it ‘landing_page_img.png’. This will ensure that there are clear file paths kept. 
-
-- Do some extra research on good and bad coding practices, there are a handful of useful articles to read, consider reviewing the following list when getting started:
-  - [Writing Your Best Code](https://learn.shayhowe.com/html-css/writing-your-best-code/)
-  - [HTML & CSS Coding Best Practices](https://medium.com/@inceptiondj.info/html-css-coding-best-practice-fadb9870a00f)
-  - [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html#General)
-
-Getting started with your Portfolio Projects can be daunting, planning your project can make it a lot easier to tackle, take small steps to reach the final outcome and enjoy the process! 
+- The [CSV-file](https://www.kaggle.com/datasets/notgibs/500-greatest-albums-of-all-time-rolling-stone) was downloaded from [kaggle.com](https://www.kaggle.com) and created by user [gibs](https://www.kaggle.com/notgibs).
