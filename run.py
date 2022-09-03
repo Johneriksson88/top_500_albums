@@ -222,7 +222,7 @@ def view_lists():
             while True:
                 try:
                     choice = int(
-                        input("Enter the number of the list you'd like to view: \n"))
+                        input("Enter the corresponding number for the list you'd like to view: \n"))
                     selected_ws = worksheets[choice]
                 except ValueError:
                     print("Invalid input, please try again.")

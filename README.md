@@ -1,6 +1,6 @@
 # Top 500 albums analysis program
 
-The top 500 albums analysis program (in short T5-AAP) is a terminal based program that lets the user gleen insights from The Rolling Stone Greatest 500 Albums Of All Time list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
+The top 500 albums analysis program is a terminal based program that lets the user gleen insights from The Rolling Stone Greatest 500 Albums Of All Time list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
 
 ![r500](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/rolling_stone.jpg?raw=true)
 
@@ -16,13 +16,15 @@ The top 500 albums analysis program (in short T5-AAP) is a terminal based progra
 
   - The main menu, which can be reached from all sub-menus, lets the user go forward in the program. It has the options View list, Analysis options, Make your own list, Add album(s) to list and quit, which shuts the program down.
 
-![Main Menu](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/main_menu.png?raw=true)
+  ![Main Menu](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/main_menu.png?raw=true)
 
   - __View lists__
 
     ![View Lists](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/view_lists.png?raw=true)
 
     - The view lists menu gives the user two options: to view the original Rolling Stone top 500 albums list or view a list which displays the user created worksheets. The data is presented in the terminal in a graphic table.
+
+    ![View user list](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/view_user_list.png?raw=true)
 
   
   - __Analysis options__
