@@ -1,6 +1,6 @@
-# Top 500 albums analysis program
+# Greatest 500 albums analysis program
 
-The top 500 albums analysis program is a terminal based program that lets the user gleen insights from The Rolling Stone Greatest 500 Albums Of All Time list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
+The greatest 500 albums analysis program is a terminal based program that lets the user gleen insights from The Rolling Stone Greatest 500 Albums Of All Time list. It provides the user with static analysis of trends in the list, a search function, and also allows for adding new lists that the user can add any albums they please to.
 
 ![r500](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/rolling_stone.jpg?raw=true)
 
@@ -41,8 +41,8 @@ The Google spreadsheet can be viewed [here](https://docs.google.com/spreadsheets
 
       - __Get top 10 lists__
 
-       - Here the user can choose to see a static top 10 list over the most represented artist, years, decades and genres.
-       - Note that the top list for decades only contains 7 decades since there are no more decades represented.
+        - Here the user can choose to see a static top 10 list over the most represented artist, years, decades and genres.
+        - Note that the top list for decades only contains 7 decades since there are no more decades represented.
 
 
   - __Make your own list__
@@ -64,7 +64,7 @@ The Google spreadsheet can be viewed [here](https://docs.google.com/spreadsheets
 
 ## Planning
 
-The planning started with finding an interesting piece of data to analyze. I looked through numbers of surveys on [Data.world](https://data.world/) and on [Kaggle](https://www.kaggle.com/). Being a music lover and a musician i chose the The Rolling Stone Greatest 500 Albums Of All Time list.
+The planning started with finding an interesting piece of data to analyze. I looked through numbers of surveys on [Data.world](https://data.world/) and [Kaggle](https://www.kaggle.com/). Being a music lover and a musician i chose the The Rolling Stone Greatest 500 Albums Of All Time list.
 Next i made a flowchart on [Lucidchart](https://lucid.app/).
 
 ![flowchart](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/flowchart.png?raw=true)
@@ -75,12 +75,14 @@ During developing the program and testing, more ideas came to be implemented in 
 
 The program was continuosly tested essentially every new few lines of code, to catch errors as soon as possible. 
 I let my mentor, friends and family test the program to give input regarding understadability and presentation.
-Before deployment i went through every menu and every input statement to make sure the validation caught every kind of erroneus or empty input. Alot of experimenting with while-loops was done to get the optimal flow of input validation in both presentation and readability of code.
+Before deployment i went through every menu and every input statement to make sure the validation caught every kind of erroneus or empty input. 
+I tried the input validation by putting in letters where numbers were asked for, empty input on all input statements, existing worksheets where a worksheet is selected etc.
+Alot of experimenting with while-loops was done to get the optimal flow of input validation in both presentation and readability of code.
 For example, i only in the end realized that there was an APIError when trying to add a new worksheet (list) with an existing name.
 
 ### Validator Testing 
 
-The code was put through [The pep8online validator](http://pep8online.com/) and only generated a bunch of the errors "Line too long", which I've learned from others does not affect the functionality of the code.
+The code was put through [The pep8online validator](http://pep8online.com/) with no errors.
 
 ![pep8-test](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/pep8.png?raw=true)
 
@@ -90,8 +92,6 @@ When running the program in the browser terminal interface through Heroku, the n
 The lesson i learned by this is to in the future start by deploying first and do the testing in the end environment.
 
 ## Deployment
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
 
 - The site was deployed to Heroku. The steps to deploy are as follows: 
   - In the Heroku dashboard, click create app and name the app accordingly. 
@@ -112,6 +112,8 @@ This section should describe the process you went through to deploy the project 
     - In the Connect to GitHub section, search for your repository name and click connect.
     - Scroll down to the deploy sections. If desired click Enable Automatic Deploys (this will automatically deploy every time you push a new change to GitHub)
     - I chose to manually deploy, which is below Automatic Deploys. This will deploy the project.
+
+## Finished project
 
 The live link can be found here - https://top-500-albums.herokuapp.com/ 
 
