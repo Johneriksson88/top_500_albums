@@ -98,7 +98,7 @@ This section should describe the process you went through to deploy the project 
 
     - Go to the Buildpacks section and click add buildpack.
       - Add python and node.js.
-      - It's important that the buildpacks show up in this order, python on top and nodejs below.
+      - It's important that the buildpacks show up in this order: python on top and nodejs below. If not, drag python on top using the hamburger icon on the left of the buildpack.
 
   - Go to the Deploy tab.
     - Select GitHub as deployment method
