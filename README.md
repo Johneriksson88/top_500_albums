@@ -91,8 +91,10 @@ This section should describe the process you went through to deploy the project 
 
   - While in the project page, go to Settings tab.
     - Click Reveal config vars and add two config vars:
-      - First vars are: KEY: CREDS, VALUE: contents of the creds.json file.
-      - Add a last config var with the content KEY: PORT, VALUE: 8000.
+      | Key | Value |
+      --- | ---
+      PORT | 8000
+      CREDS | contents of the creds.json-file
 
     - Go to the Buildpacks section and click add buildpack.
       - Add python and node.js.
