@@ -67,7 +67,7 @@ def analysis_options():
 
 def search_artist():
     """
-    Lets the user search the top 500 album list for an artist/band, and then shows a tabulated list of 
+    Lets the user search the top 500 album list for an artist/band, and then shows a tabulated list of
     all the instances of placements on the top 500 list of that artist/band.
     Converts input and strings it reads to lower case to make it more versatile.
     """
@@ -289,19 +289,21 @@ def new_list():
         worksheets = SHEET.worksheets()
         for num, ws in enumerate(worksheets):
             if ws == list_name:
-                print(f"There's already a worksheet with the name {ws}, please try another name.")
+                print(
+                    f"There's already a worksheet with the name {ws}, please try another name.")
                 continue
         if len(list_name) == 0:
             print("List must have a name, please try again.")
             continue
         else:
             break
-        
+
     try:
         new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
         print(f"Created new list: {new_ws.title}\n")
     except gspread.exceptions.APIError as e:
-        print(f'A sheet with the name {list_name} already exists. Please enter another name.')
+        print(
+            f'A sheet with the name {list_name} already exists. Please enter another name.')
         new_list()
 
     choice = input(f"1. Add an album to {new_ws.title}\n2. Main menu\n")
