@@ -22,7 +22,7 @@ print("*" * 70 + "\n\n" + "Welcome to a program for analysis of \
 The Rolling Stones top 500 albums list.\nThe list was published \
 in 2003 with a slight update 2012. \
 \nIt is based on weighted votes from selected musicians, critics, \
-and industry figures, and compiled into a list by the music magazine \
+and industry\nfigures, and compiled into a list by the music magazine \
 'The Rolling Stone'.\n\n" + "*" * 70)
 
 print("\nIn the menu below you can explore the options of this program.\n")
@@ -34,7 +34,7 @@ def main_menu():
     """
 
     print("\n----  MAIN MENU ----\n")
-    print("\n1. View lists")
+    print("1. View lists")
     print("2. Analysis options")
     print("3. Make your own list")
     print("4. Add album(s) to existing list")
@@ -166,7 +166,16 @@ def top_10_artist():
     print(
         f"\nThe most popular artists were {', '.join(shared_first_place)}",
         f"with {get_pct(no_placements)}% each of spots on the list.")
-    get_top_10()
+    print("1. View another top 10 list\n0. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            get_top_10()
+        elif choice == "0":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
 
 
 def top_10_year():
@@ -182,7 +191,16 @@ def top_10_year():
     print(
         f"\nThe most popular year was {top_1_year[0]} with",
         f"{get_pct(no_placements)}% of spots on the list.")
-    get_top_10()
+    print("1. View another top 10 list\n0. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            get_top_10()
+        elif choice == "0":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
 
 
 def top_10_decade():
@@ -213,7 +231,16 @@ def top_10_decade():
     print(
         f"\nThe most popular decade was the {decade}s with",
         f"{get_pct(no_placements)}% of spots on the list.")
-    get_top_10()
+    print("1. View another top 10 list\n0. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            get_top_10()
+        elif choice == "0":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
 
 
 def top_10_genre():
@@ -231,7 +258,16 @@ def top_10_genre():
     print(
         f"\nThe most popular genre was {genre} with"
         f" {get_pct(no_placements)}% of spots on the list.")
-    get_top_10()
+    print("1. View another top 10 list\n0. Main menu\n")
+    choice = input("Enter menu choice:\n")
+    while True:
+        if choice == "1":
+            get_top_10()
+        elif choice == "0":
+            main_menu()
+        else:
+            print("Invalid input, please try again.")
+            continue
 
 
 def view_lists():
