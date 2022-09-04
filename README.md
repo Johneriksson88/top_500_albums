@@ -4,6 +4,8 @@ The top 500 albums analysis program is a terminal based program that lets the us
 
 ![r500](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/rolling_stone.jpg?raw=true)
 
+The Google spreadsheet can be viewed [here](https://docs.google.com/spreadsheets/d/1346uTGwNnat9Dr-QHwh7YEM6kL67MfjkyIVBjj8pVrY/edit?usp=sharing).
+
 ## Features 
 
 ### Existing Features
