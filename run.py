@@ -207,7 +207,7 @@ def top_10_genre():
 
 def view_lists():
     print("\n**** VIEW LISTS ****\n")
-    print("1. View the Rolling Stone top 500 albums list\n2. View a user created list\n0. Main menu")
+    print("1. View the Rolling Stone greatest 500 albums list\n2. View a user created list\n0. Main menu")
     while True:
         choice = input("Enter menu choice:\n")
         if choice == "1":
@@ -215,7 +215,7 @@ def view_lists():
                   "Number", "Year", "Album", "Artist", "Genre"]))
             break
         elif choice == "2":
-            print("\n**** SELECT LIST ****\n\n")
+            print("\n**** SELECT LIST ****\n")
             worksheets = SHEET.worksheets()
             for num, ws in enumerate(worksheets[1:]):
                 print(f"{num+1}. {ws.title}")
