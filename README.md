@@ -34,7 +34,7 @@ The top 500 albums analysis program is a terminal based program that lets the us
     - The analysis options menu lets the user either search the original list by artist, or go into the Get top 10 lists menu.
 
       - __Search by artist__
-      
+
         - Here the user can search the original Rolling Stone list by artist name, and have the all the albums of that artist/band on the list displayed in a tabulated format.
 
       - __Get top 10 lists__
@@ -78,7 +78,9 @@ For example, i only in the end realized that there was an APIError when trying t
 
 ### Validator Testing 
 
-The code was put through [The pep8online validator](http://pep8online.com/) and only generated the errors "Line too long", which I've learned from others does not affect the functionality of the code.
+The code was put through [The pep8online validator](http://pep8online.com/) and only generated a bunch of the errors "Line too long", which I've learned from others does not affect the functionality of the code.
+
+![pep8-test](https://github.com/Johneriksson88/top_500_albums/blob/main/assets/images/pep8.png?raw=true)
 
 ### Unfixed Bugs
 

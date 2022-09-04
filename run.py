@@ -72,7 +72,8 @@ def search_artist():
     Converts input and strings it reads to lower case to make it more versatile.
     """
     print("\n**** SEARCH BY ARTIST ****\n")
-    print("Here you can search for an artist or band and see a list of the album(s) they have on the list.\nInput can be lower case.\n")
+    print("Here you can search for an artist or band and see a list of"
+          "the album(s) they have on the list.\nInput can be lower case.\n")
     while True:
         while True:
             q = input("Enter an artist or a band: \n").lower()
@@ -281,17 +282,11 @@ def add_to_list():
 
 def new_list():
     """
-    Lets the user create a new list, and gives him/her the option to add an album to that list.
+    Lets the user create a new list, and gives them the option to add an album to that list.
     """
     print("\n**** CREATE NEW LIST ****\n")
     while True:
         list_name = input("Enter a name for your list: \n")
-        worksheets = SHEET.worksheets()
-        for num, ws in enumerate(worksheets):
-            if ws == list_name:
-                print(
-                    f"There's already a worksheet with the name {ws}, please try another name.")
-                continue
         if len(list_name) == 0:
             print("List must have a name, please try again.")
             continue
@@ -301,7 +296,7 @@ def new_list():
     try:
         new_ws = SHEET.add_worksheet(title=list_name, rows=500, cols=5)
         print(f"Created new list: {new_ws.title}\n")
-    except gspread.exceptions.APIError as e:
+    except gspread.exceptions.APIError:
         print(
             f'A sheet with the name {list_name} already exists. Please enter another name.')
         new_list()
