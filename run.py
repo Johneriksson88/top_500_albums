@@ -286,6 +286,11 @@ def new_list():
     print("\n**** CREATE NEW LIST ****\n")
     while True:
         list_name = input("Enter a name for your list: \n")
+        worksheets = SHEET.worksheets()
+        for num, ws in enumerate(worksheets):
+            if ws == list_name:
+                print(f"There's already a worksheet with the name {ws}, please try another name.")
+                continue
         if len(list_name) == 0:
             print("List must have a name, please try again.")
             continue
