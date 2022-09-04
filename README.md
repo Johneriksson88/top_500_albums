@@ -33,6 +33,9 @@ The top 500 albums analysis program is a terminal based program that lets the us
 
     - The analysis options menu lets the user either search the original list by artist, or go into the Get top 10 lists menu.
 
+      - __Search by artist__
+      
+        - Here the user can search the original Rolling Stone list by artist name, and have the all the albums of that artist/band on the list displayed in a tabulated format.
 
       - __Get top 10 lists__
 
